@@ -1,5 +1,5 @@
 use std::env;
-use std::net::SocketAddrV4;
+use std::net::SocketAddr;
 
 extern crate igd;
 
@@ -19,7 +19,7 @@ fn main() {
             let local_port = args[2].parse().expect("Invalid local port");
             let remote_port = args[3].parse().expect("Invalid remote port");
 
-            let local_addr = SocketAddrV4::new(local_ip, local_port);
+            let local_addr = SocketAddr::new(local_ip, local_port);
 
             match gateway.add_port(igd::PortMappingProtocol::TCP, remote_port, local_addr, 60, "crust") {
                 Err(ref err) => println!("{:?}", err),

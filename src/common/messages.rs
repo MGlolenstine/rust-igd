@@ -1,5 +1,5 @@
 use crate::PortMappingProtocol;
-use std::net::SocketAddrV4;
+use std::net::SocketAddr;
 
 // Content of the request.
 pub const SEARCH_REQUEST: &'static str = "M-SEARCH * HTTP/1.1\r
@@ -37,7 +37,7 @@ pub fn format_get_external_ip_message() -> String {
 pub fn format_add_any_port_mapping_message(
     protocol: PortMappingProtocol,
     external_port: u16,
-    local_addr: SocketAddrV4,
+    local_addr: SocketAddr,
     lease_duration: u32,
     description: &str,
 ) -> String {
@@ -68,7 +68,7 @@ pub fn format_add_any_port_mapping_message(
 pub fn format_add_port_mapping_message(
     protocol: PortMappingProtocol,
     external_port: u16,
-    local_addr: SocketAddrV4,
+    local_addr: SocketAddr,
     lease_duration: u32,
     description: &str,
 ) -> String {

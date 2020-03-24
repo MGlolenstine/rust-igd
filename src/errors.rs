@@ -544,29 +544,29 @@ impl fmt::Display for Error {
     }
 }
 
-impl error::Error for Error {
-    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
-        match *self {
-            Error::AddAnyPortError(ref e) => Some(e),
-            Error::AddPortError(ref e) => Some(e),
-            Error::GetExternalIpError(ref e) => Some(e),
-            Error::RemovePortError(ref e) => Some(e),
-            Error::RequestError(ref e) => Some(e),
-            Error::SearchError(ref e) => Some(e),
-        }
-    }
+// impl error::Error for Error {
+//     fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+//         match *self {
+//             Error::AddAnyPortError(ref e) => Some(e),
+//             Error::AddPortError(ref e) => Some(e),
+//             Error::GetExternalIpError(ref e) => Some(e),
+//             Error::RemovePortError(ref e) => Some(e),
+//             Error::RequestError(ref e) => Some(e),
+//             Error::SearchError(ref e) => Some(e),
+//         }
+//     }
 
-    fn description(&self) -> &str {
-        match *self {
-            Error::AddAnyPortError(ref e) => e.description(),
-            Error::AddPortError(ref e) => e.description(),
-            Error::GetExternalIpError(ref e) => e.description(),
-            Error::RemovePortError(ref e) => e.description(),
-            Error::RequestError(ref e) => e.description(),
-            Error::SearchError(ref e) => e.description(),
-        }
-    }
-}
+//     fn description(&self) -> &str {
+//         match *self {
+//             Error::AddAnyPortError(ref e) => e.description(),
+//             Error::AddPortError(ref e) => e.description(),
+//             Error::GetExternalIpError(ref e) => e.description(),
+//             Error::RemovePortError(ref e) => e.description(),
+//             Error::RequestError(ref e) => e.description(),
+//             Error::SearchError(ref e) => e.description(),
+//         }
+//     }
+// }
 
 impl From<AddAnyPortError> for Error {
     fn from(err: AddAnyPortError) -> Error {
